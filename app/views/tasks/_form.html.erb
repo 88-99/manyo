@@ -11,22 +11,24 @@
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
-  <div class="registration_date">
-    <%= form.label :registration_date %>
-    <%= form.text_field :cregistration_date %>
-  </div>
-  <div class="deadline">
-    <%= form.label :deadline %>
-    <%= form.text_field :deadline %>
-  </div>
+
   <div class="task_content">
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
-  <div class="status">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
+
+  <!--
+  <div class="deadline">
+    <%#= form.label :deadline %>
+    <%#= form.text_field :deadline %>
   </div>
+
+  <div class="status">
+    <%#= form.label :status %>
+    <%#= form.text_field :status %>
+  </div>
+  -->
+
   <%= form.submit %>
 <% end %>
 <%= link_to '一覧画面へ', tasks_path %>
