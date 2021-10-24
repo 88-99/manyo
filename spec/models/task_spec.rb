@@ -21,8 +21,3 @@ describe 'タスクモデル機能', type: :model do
     end
   end
 end
-
-
-RSpec.describe Task, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
