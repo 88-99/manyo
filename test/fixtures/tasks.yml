@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  content: MyText
+  registration_date: 2021-10-24
+  deadline: 2021-10-24 08:37:19
+  status: MyString
+
+two:
+  title: MyString
+  content: MyText
+  registration_date: 2021-10-24
+  deadline: 2021-10-24 08:37:19
+  status: MyString

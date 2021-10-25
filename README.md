@@ -1,24 +1,34 @@
 # README
+***
+tasks table
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column | Type | Options |
+| :-- | :-: | --: |
+| title | string | null:false |
+| content | text | null:false |
+| deadline | datetime | null:false |
+| status | string | null:false |
+| created_at | datetime | null:false |
+| updated_at | datetime | null:false |
+| user_id | integer | null:false |
 
-Things you may want to cover:
+user table
 
-* Ruby version
+| Column | Type | Options |
+| :-- | :-: | --: |
+| name | string | null:false |
+| email | string | null:false |
+| password | string | null:false |
 
-* System dependencies
+label table
 
-* Configuration
+| Column | Type | Options |
+| :-- | :-: | --: |
+| name | string | null:false |
 
-* Database creation
+labelling table
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+| Column | Type | Options |
+| :-- | :-: | --: |
+| task_id | integer | null:false |
+| label_id | integer | null:false |
