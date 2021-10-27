@@ -32,3 +32,25 @@ labelling table
 | :-- | :-: | --: |
 | task_id | integer | null:false |
 | label_id | integer | null:false |
+
+***
+## デプロイ手順
+
+1.Herokuに新しいアプリケーションを作成する  
+$ heroku create  
+<br />
+2.アセットプリコンパイルをする  
+$ rails assets:precompile RAILS_ENV=production  
+<br />
+3.git commitコマンドを使用して、コミットをする   
+$ git add -A  
+$ git commit -m "init"  
+<br />
+4.Herokuにデプロイをする  
+$ git push heroku master  
+<br />
+5.データベースを移行する  
+$ heroku run rails db:migrate  
+<br />
+6.アプリケーションにアクセスする  
+$ heroku open  
