@@ -3,7 +3,8 @@
 <p>内容: <%= @task.content %></p>
 <!--
 <p>ステイタス: <%#= @task.status %></p>
-<p>終了期限: <%#= @task.deadline %></p>
 -->
+<p>終了期限: <%= @task.deadline %></p>
+
 <p>登録日: <%= @task.created_at %></p>
 <%= link_to '一覧画面へ', tasks_path %>
