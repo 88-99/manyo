@@ -7,40 +7,55 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit new_task_path
         fill_in :task_title, with: 'abc, task'
         fill_in :task_content, with: 'def, task'
+        fill_in :task_deadline, with: '20211010'
         click_button '登録する'
         expect(page).to have_content 'task'
       end
     end
   end
 
-  describe '一覧表示機能' do
-    context '一覧画面に遷移した場合' do
-      it '作成済みのタスク一覧が表示される' do
-          FactoryBot.create(:task)
-          FactoryBot.create(:second_task)
+  # describe '一覧表示機能' do
+  #   context '一覧画面に遷移した場合' do
+  #     it '作成済みのタスク一覧が表示される' do
+  #         FactoryBot.create(:task)
+  #         FactoryBot.create(:second_task)
+  #       visit tasks_path
+  #       expect(page).to have_content 'task'
+  #     end
+  #   end
+    # context 'タスクが作成日時の降順に並んでいる場合' do
+    #   it '新しいタスクが一番上に表示される' do
+    #       Task.create!(title: 'タイトル1', content: '内容1', created_at: Time.current + 1.days)
+    #       Task.create!(title: 'タイトル2', content: '内容1', created_at: Time.current + 2.days)
+    #       Task.create!(title: 'タイトル3', content: '内容1', created_at: Time.current + 3.days)
+    #     visit tasks_path
+    #     task = first('tbody tr')
+    #     expect(task).to have_content 'タイトル3'
+    #   end
+    # end
+    context 'タスクが終了期限の降順に並んでいる場合' do
+      it '終了期限の遠いタスクが一番上に表示される' do
+        FactoryBot.create(:task)
+        FactoryBot.create(:second_task)
+        FactoryBot.create(:third_task)
+          # FactoryBot.create(title: 'タイトル1', content: '内容1', deadline: Time.current + 1.days)
+          # FactoryBot.create(title: 'タイトル2', content: '内容1', deadline: Time.current + 2.days)
+          # FactoryBot.create(title: 'タイトル3', content: '内容1', deadline: Time.current + 3.days)
         visit tasks_path
-        expect(page).to have_content 'task'
-      end
-    end
-    context 'タスクが作成日時の降順に並んでいる場合' do
-      it '新しいタスクが一番上に表示される' do
-          Task.create!(title: 'タイトル1', content: '内容1', created_at: Time.current + 1.days)
-          Task.create!(title: 'タイトル2', content: '内容1', created_at: Time.current + 2.days)
-          Task.create!(title: 'タイトル3', content: '内容1', created_at: Time.current + 3.days)
-        visit tasks_path
+        visit tasks_path(sort_expired: "true")
         task = first('tbody tr')
-        expect(task).to have_content 'タイトル3'
+        byebug
+        expect(task).to have_content 'task1'
       end
     end
-  end
-
-  describe '詳細表示機能' do
-     context '任意のタスク詳細画面に遷移した場合' do
-       it '該当タスクの内容が表示される' do
-         task = FactoryBot.create(:task)
-         visit task_path(task.id)
-         expect(page).to have_content 'task'
-       end
-     end
-  end
+  #
+  # describe '詳細表示機能' do
+  #    context '任意のタスク詳細画面に遷移した場合' do
+  #      it '該当タスクの内容が表示される' do
+  #        task = FactoryBot.create(:task)
+  #        visit task_path(task.id)
+  #        expect(page).to have_content 'task'
+  #      end
+  #    end
+  # end
 end
