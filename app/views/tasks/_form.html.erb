@@ -1,12 +1,12 @@
 <%= form_with(model: task, local: true) do |form| %>
-<% if task.errors.any? %>
-  <h2><%= task.errors.count %>件のエラーがあります。</h2>
-  <ul>
-    <% task.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if task.errors.any? %>
+    <h2><%= task.errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="task_title">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -19,7 +19,7 @@
 
   <div class="deadline">
     <%= form.label :deadline %>
-    <%= form.text_field :deadline %>
+    <%= form.datetime_field :deadline %>
   </div>
   <!--
   <div class="status">
@@ -27,6 +27,7 @@
     <%#= form.text_field :status %>
   </div>
   -->
+  <%= form.select :status, [["未着手", "未着手"], ["着手", "着手"], ["完了", "完了"]], selected: "着手" %>
 
   <%= form.submit %>
 <% end %>

@@ -44,6 +44,6 @@ before_action :set_task, only: %i[ show edit update destroy ]
   end
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline)
+    params.require(:task).permit(:title, :content, :deadline, :status)
   end
 end
