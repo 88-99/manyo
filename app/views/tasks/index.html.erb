@@ -2,7 +2,7 @@
   <%= form_with(model: @task, scope: :task, method: :get, url: tasks_path, local: true) do |form| %>
     <div class="task_serch">
       <%= form.text_field :search %>
-      <%= form.text_field :search %>
+      <%= form.select :status, Task.status.keys.map {|k| [k, k]}%>
       <%= form.submit '検索', name: nil %>
     </div>
   <% end %>
