@@ -213,6 +213,8 @@ ja:
       task:
         title: タイトル
         content: 内容
+        deadline: 終了期限
+        status: ステータス
   helpers:
     submit:
       create: 登録する
