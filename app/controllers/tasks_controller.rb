@@ -18,22 +18,11 @@ before_action :set_task, only: %i[ show edit update destroy ]
   # end
 
   def index
-    @tasks = Task.where(status: params[:status])
+    @tasks = Task.all
+    @tasks = @tasks.order(deadline: "DESC") if params[:sort_expired].present?
+    @tasks = @tasks.where("title LIKE ?", "%#{params[:title]}%") if params[:title].present?
+    @tasks = @tasks.where(status: params[:status]) if params[:status].present?
   end
-
-  # def index
-  #   if params[:task].present?
-  #     @tasks = Task.where('title LIKE ?', "%#{params[:task][:search]}%")
-  #       if params[:sort_expired].present?
-  #         @tasks = Task.all.order(deadline: "DESC")
-  #       end
-  #   else
-  #     @tasks = Task.all
-  #       if params[:sort_expired].present?
-  #         @tasks = Task.all.order(deadline: "DESC")
-  #       end
-  #   end
-  # end
 
   def new
     @task = Task.new
