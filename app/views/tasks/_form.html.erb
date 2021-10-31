@@ -22,13 +22,10 @@
     <%= form.label :deadline %>
     <%= form.datetime_field :deadline %>
   </div>
-  <!--
-  <div class="status">
-    <%#= form.label :status %>
-    <%#= form.text_field :status %>
-  </div>
-  -->
+
   <%= form.select :status, [["未着手", "未着手"], ["着手", "着手"], ["完了", "完了"]], selected: "着手" %>
+
+  <%= form.select :priority, [["高", "高"], ["中", "中"], ["低", "低"]], selected: "高" %>
 
   <%= form.submit %>
 <% end %>
