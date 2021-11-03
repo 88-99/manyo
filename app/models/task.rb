@@ -4,11 +4,11 @@ class Task < ApplicationRecord
   validates :status, presence: true
 
   enum status: { 未着手:0, 着手:1, 完了:2 }
-  enum priority: { 高:0, 中:1, 低:2 }
+  enum priority: { 低:0, 中:1, 高:2 }
 
   scope :order_tasks, -> { reorder(deadline: :desc) }
 
-  scope :order_priorities, -> { reorder(priority: :asc) }
+  scope :order_priorities, -> { reorder(priority: :desc) }
 
   scope :search_title, -> (title) {
     where("title LIKE ?", "%#{ title }%")
@@ -17,5 +17,4 @@ class Task < ApplicationRecord
   scope :search_status, -> (status) {
     where(status: status)
   }
-
 end
