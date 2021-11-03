@@ -7,7 +7,7 @@ before_action :set_task, only: %i[ show edit update destroy ]
     @tasks = @tasks.order_priorities if params[:sort_priority].present?
     @tasks = @tasks.search_title(params[:title]) if params[:title].present?
     @tasks = @tasks.search_status(params[:status]) if params[:status].present?
-    @tasks = @tasks.page(params[:page]).per(10)
+    @tasks = @tasks.page(params[:page]).per(5)
   end
 
   def new
