@@ -7,7 +7,8 @@ tasks table
 | title | string | null:false |
 | content | text | null:false |
 | deadline | datetime | null:false |
-| status | string | null:false |
+| status | integer | null:false |
+| priority | integer | null:false |
 | created_at | datetime | null:false |
 | updated_at | datetime | null:false |
 | user_id | integer | null:false |
