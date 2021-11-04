@@ -3,7 +3,7 @@
     <div class="task_search">
       <p>タスク名 <%= form.text_field :title %></p>
       <p>ステータス <%= form.select :status, [["未着手", 0], ["着手", 1], ["完了", 2]], include_blank: true %></p>
-      <p><%= form.submit '検索', name: nil %></p>
+      <p><%= form.submit '検索 / ﾘｾｯﾄ', name: nil %></p>
     </div>
   <% end %>
 <table class="table table-striped">

@@ -15,8 +15,7 @@ before_action :set_task, only: %i[ show edit update destroy ]
   end
 
   def create
-    # @task = current_user.tasks.build(task_params)
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       redirect_to tasks_path, notice: "タスクを登録しました！"
     else
