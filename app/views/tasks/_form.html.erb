@@ -20,7 +20,8 @@
 
   <div class="deadline">
     <%= form.label :deadline %>
-    <%= form.datetime_field :deadline %>
+    <%= form.text_field :deadline %>
+    <%#= form.datetime_field :deadline %>
   </div>
 
   <%= form.select :status, [["未着手", "未着手"], ["着手", "着手"], ["完了", "完了"]], selected: "着手" %>
