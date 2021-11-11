@@ -14,7 +14,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to admin_users_path
+      redirect_to admin_users_path, notice: "ユーザーを登録しました！"
     else
       render :new
     end
