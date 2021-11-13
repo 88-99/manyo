@@ -19,7 +19,6 @@ RSpec.describe 'ユーザー機能', type: :system do
   #       fill_in :user_password, with: 'test'
   #       fill_in :user_password_confirmation, with: 'test'
   #       click_button 'アカウントを作成する'
-  #       visit tasks_path
   #       expect(page).to have_content 'test1234'
   #     end
   #   end
@@ -65,5 +64,6 @@ RSpec.describe 'ユーザー機能', type: :system do
   #       expect(page).to have_content 'ログアウトしました。'
   #     end
   #   end
+  # end
   # end
 end
