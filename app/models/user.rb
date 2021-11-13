@@ -14,16 +14,16 @@ class User < ApplicationRecord
   private
 
   def check_destroy_admin
-    throw(:abort) if (self.admin == false && User.where(admin: true).size == 1) && self == User.find_by(admin:true)
-    # if User.where(admin: true).count <= 1 && self.admin == true
-    #   throw(:abort)
-    # end
+    if User.where(admin: true).count <= 1 && self.admin == true
+      throw(:abort)
+    end
+    # throw(:abort) if (self.admin == false && User.where(admin: true).size == 1) && self == User.find_by(admin:true)
   end
 
   def check_update_admin
-    throw(:abort) if self.admin == true && User.where(admin: true).count == 1
-    # if User.where(admin: true).count == 1 && self.admin == false
-    #   throw(:abort)
-    # end
+    if User.where(admin: true).count == 1 && self.admin == false
+      throw(:abort)
+    end
+    # throw(:abort) if self.admin == true && User.where(admin: true).count == 1
   end
 end

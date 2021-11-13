@@ -8,8 +8,8 @@ module SessionsHelper
   end
 
   def check_admin
-   unless current_user.admin?
-     redirect_to root_path, notice: "権限がありません。"
-   end
+    unless current_user.admin?
+      redirect_to root_path, notice: "権限がありません。"
+    end
   end
 end
