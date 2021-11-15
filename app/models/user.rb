@@ -21,9 +21,9 @@ class User < ApplicationRecord
   end
 
   def check_update_admin
-    if User.where(admin: true).count == 1 && self.admin == false
-      throw(:abort)
-    end
-    # throw(:abort) if self.admin == true && User.where(admin: true).count == 1
+    # if User.where(admin: true).count == 1 && self.admin == false
+    #   throw(:abort)
+    # end
+    throw(:abort) if self.admin == true && User.where(admin: true).count == 1
   end
 end
