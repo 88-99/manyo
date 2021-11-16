@@ -72,8 +72,9 @@ RSpec.describe '管理機能', type: :system do
   describe 'ユーザの削除機能' do
     context '管理ユーザがユーザを削除した場合' do
       it '該当ユーザが削除される' do
-        page.all(".btn-danger")[2].click
-        expect(page).to have_content 'ユーザ「factory_user_bbb」を削除しました！'
+        # byebug
+        page.all(".btn-danger")[1].click
+        expect(page).not_to have_content 'factory_user_aaa'
       end
     end
   end

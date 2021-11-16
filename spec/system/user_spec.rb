@@ -13,6 +13,7 @@ RSpec.describe 'ユーザー機能', type: :system do
   describe '新規作成機能' do
     context 'ユーザーを新規作成した場合' do
       it '作成したユーザーが表示される' do
+        click_on "Logout"
         visit new_user_path
         fill_in :user_name, with: 'test1234'
         fill_in :user_email, with: 'test@test.com'
@@ -35,6 +36,7 @@ RSpec.describe 'ユーザー機能', type: :system do
   describe 'セッション機能' do
     context 'ログインした場合' do
       it 'ログインしたユーザーが表示される' do
+        click_on "Logout"
         visit new_session_path
         fill_in :session_email, with: @user.email
         fill_in :session_password, with: @user.password
