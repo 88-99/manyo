@@ -39,4 +39,5 @@
 <%= link_to '登録画面へ', new_task_path, class: "btn btn-light" %>
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class: "btn btn-light" %>
 <%= link_to "優先順位でソートする", tasks_path(sort_priority: "true"), class: "btn btn-light" %>
+<%= link_to 'ユーザ一覧画面へ', admin_users_path if current_user.admin %>
 <%= paginate @tasks %>
