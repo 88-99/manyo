@@ -34,7 +34,6 @@ class UsersController < ApplicationController
   end
 
   def ensure_correct_user
-    # byebug
     user = User.find(params[:id])
     if user.id != current_user.id
       redirect_to tasks_path, notice: "権限がありません"

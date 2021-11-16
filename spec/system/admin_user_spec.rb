@@ -49,7 +49,7 @@ RSpec.describe '管理機能', type: :system do
         fill_in :user_password, with: 'abcd'
         fill_in :user_password_confirmation, with: 'abcd'
         click_button 'アカウントを作成する'
-        visit tasks_path
+        visit admin_users_path
         expect(page).to have_content 'test_abcd'
       end
     end
@@ -72,9 +72,8 @@ RSpec.describe '管理機能', type: :system do
   describe 'ユーザの削除機能' do
     context '管理ユーザがユーザを削除した場合' do
       it '該当ユーザが削除される' do
-        # byebug
         page.all(".btn-danger")[1].click
-        expect(page).not_to have_content 'factory_user_aaa'
+        expect(page).to have_content 'ユーザ「factory_user_aaa」を削除しました！'
       end
     end
   end
