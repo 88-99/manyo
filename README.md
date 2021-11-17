@@ -20,6 +20,7 @@ user table
 | name | string | null:false |
 | email | string | null:false |
 | password | string | null:false |
+| admin | boolean | default: false |
 
 label table
 

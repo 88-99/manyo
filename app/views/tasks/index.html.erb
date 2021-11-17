@@ -3,12 +3,13 @@
     <div class="task_search">
       <p>タスク名 <%= form.text_field :title %></p>
       <p>ステータス <%= form.select :status, [["未着手", 0], ["着手", 1], ["完了", 2]], include_blank: true %></p>
-      <p><%= form.submit '検索', name: nil %></p>
+      <p><%= form.submit '検索 / ﾘｾｯﾄ', name: nil %></p>
     </div>
   <% end %>
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>作成者</th>
       <th>タイトル</th>
       <th>詳しい内容</th>
       <th>ステータス</th>
@@ -20,6 +21,7 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
+        <td><%= task.user.name %></td>
         <td><%= task.title %></td>
         <td><%= task.content %></td>
         <td><%= task.status %></td>
@@ -37,4 +39,5 @@
 <%= link_to '登録画面へ', new_task_path, class: "btn btn-light" %>
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class: "btn btn-light" %>
 <%= link_to "優先順位でソートする", tasks_path(sort_priority: "true"), class: "btn btn-light" %>
+<%= link_to 'ユーザ一覧画面へ', admin_users_path if current_user.admin %>
 <%= paginate @tasks %>

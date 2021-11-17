@@ -208,7 +208,7 @@ ja:
     errors:
       models:
         task: ブログ
-        # user: ユーザー
+        user: ユーザー
     attributes:
       task:
         title: タイトル
@@ -216,6 +216,13 @@ ja:
         deadline: 終了期限
         status: ステータス
         priority: 優先順位
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        activated: アクティブフラグ
+        admin: 管理者フラグ
   helpers:
     submit:
       create: 登録する
