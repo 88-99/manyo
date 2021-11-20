@@ -40,24 +40,20 @@ class Admin::UsersController < ApplicationController
 
     if @user.update(user_params)
       redirect_to admin_users_path, notice: "ユーザ「#{@user.name}」を更新しました！"
+    elsif @user.errors.any? == false
+      flash[:notice] = "ユーザ「#{@user.name}」は、管理者がいなくなるため更新できません。"
+      render :edit
     else
       render :edit
     end
   end
 
   def destroy
-    if User.where(admin: true).count <= 1 && @user.admin == true
-      redirect_to admin_users_path, notice: "ユーザ「#{@user.name}」は、管理者がいなくなるため削除できません。"
-    else
-      @user.destroy
+    if @user.destroy
       redirect_to admin_users_path, notice: "ユーザ「#{@user.name}」を削除しました！"
+    else
+      redirect_to admin_users_path, notice: "ユーザ「#{@user.name}」は、管理者がいなくなるため削除できません。"
     end
-    # @user.destroy <#% 自分が書いたコード %>
-    # if User.where(admin: true).count <= 1 && @user.admin == true
-    #   redirect_to admin_users_path, notice: "ユーザ「#{@user.name}」は、管理者がいなくなるため削除できません。"
-    # else
-    #   redirect_to admin_users_path, notice: "ユーザ「#{@user.name}」を削除しました！"
-    # end
   end
 
   private

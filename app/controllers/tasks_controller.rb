@@ -8,6 +8,7 @@ class TasksController < ApplicationController
     @tasks = @tasks.order_priorities if params[:sort_priority].present?
     @tasks = @tasks.search_title(params[:title]) if params[:title].present?
     @tasks = @tasks.search_status(params[:status]) if params[:status].present?
+    @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
     @tasks = @tasks.page(params[:page]).per(5)
   end
 
@@ -25,6 +26,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    @labels = @task.labels
   end
 
   def update
@@ -37,7 +39,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to tasks_path, notice: "タスクを削除しました！"
+      redirect_to tasks_path, notice: "タスクを削除しました！"
   end
 
   private
@@ -46,6 +48,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline, :status, :priority)
+    params.require(:task).permit(:title, :content, :deadline, :status, :priority, { label_ids: [] })
   end
 end

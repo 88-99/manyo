@@ -1,0 +1,19 @@
+<h2>ラベル一覧</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ラベル名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @labels.each do |label| %>
+        <tr>
+          <td><%= label.name %></td>
+          <td><%= link_to "編集する", edit_label_path(label.id), class: "btn btn-success" %></td>
+          <td><%= link_to "削除する", label_path(label.id), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "ラベル登録画面へ", new_label_path, class: "btn btn-light" %>
+  <%= link_to "タスク一覧画面へ", tasks_path, class: "btn btn-light" %>
