@@ -37,7 +37,7 @@ RSpec.describe 'ラベル管理機能', type: :system do
         click_button '登録する'
         visit tasks_path
         page.all(".btn-primary")[3].click
-        expect(page).to have_content 'label-5'
+        expect(page).to have_content 'label-7'
       end
     end
   end
@@ -46,9 +46,9 @@ RSpec.describe 'ラベル管理機能', type: :system do
     context 'ラベル名で検索した場合' do
       it '検索したラベルが付けられているタスクが表示される' do
         visit tasks_path
-        select 'label-8', from: 'label_id'
+        select 'label-9', from: 'label_id'
         click_on '検索 / ﾘｾｯﾄ'
-        expect(page).to have_content 'label-8'
+        expect(page).to have_content 'label-9'
       end
     end
   end
