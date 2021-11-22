@@ -31,7 +31,7 @@
   <%#= f.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
 
   <% Label.all.each do |label| %>
-    <%= f.check_box :label_ids, { multiple: true, checked: @task.labels.find_by(id: label.id).present?, include_hidden: false }, label[:id] %>
+    <%= f.check_box :label_ids, { multiple: true, checked: @task.labels.find_by(id: label.id).present?, include_hidden: false, class: "btn btn-danger" }, label[:id] %>
     <%= label.name %>
   <% end %>
 
