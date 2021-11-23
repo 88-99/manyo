@@ -28,16 +28,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    # if (@user.admin == false && User.where(admin: true).size == 1) && @user == User.find_by(admin:true) <#% 更新されてしまう %>
-    #   redirect_to admin_users_path, notice: "ユーザ「#{@user.name}」は、管理者がいなくなるため更新できません。"
-    # else
-    #   @user.update(user_params)
-    #     redirect_to admin_users_path, notice: "ユーザ「#{@user.name}」を更新しました！"
-    # elsif
-    #   render edit <#% エラーになる %>
-    # end
-
-
     if @user.update(user_params)
       redirect_to admin_users_path, notice: "ユーザ「#{@user.name}」を更新しました！"
     elsif @user.errors.any? == false

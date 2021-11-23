@@ -39,7 +39,12 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-      redirect_to tasks_path, notice: "タスクを削除しました！"
+    redirect_to tasks_path, notice: "タスクを削除しました！"
+      # if current_user.admin
+      #   redirect_to admin_user_path(@task.user_id), notice: "タスクを削除しました！"
+      # else
+      #   redirect_to tasks_path, notice: "タスクを削除しました！"
+      # end
   end
 
   private
